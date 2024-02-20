@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const path = require("path");
 
 module.exports = {
     mode: "development",
@@ -45,8 +44,8 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: ["file-loader"]
+                test: /\.(png|svg|jpg|gif|ttf)$/,
+                use: 'file-loader',
             }
         ]
     }

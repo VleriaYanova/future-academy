@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "carioBold";
+    src: url("../../fonts/Cairo-Bold.ttf");
+}
+
+@font-face {
+    font-family: "carioRegular";
+    src: url("../../fonts/Cairo-Regular.ttf");
+}
+@font-face {
+    font-family: "carioSemiBold";
+    src: url("../../fonts/Cairo-SemiBold.ttf");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
