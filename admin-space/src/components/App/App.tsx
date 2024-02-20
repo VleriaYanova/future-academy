@@ -17,6 +17,9 @@ const App = () => {
 
     return (
         <>
+            <ThemeToggler onClick={() => {
+                setDarkTheme(!darkTheme)
+            }}/>
             <SideBar/>
         </>
     );
