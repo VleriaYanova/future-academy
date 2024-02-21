@@ -16,7 +16,7 @@ const SideBar = () => {
 
     }
     return (
-        <div className='h-dvh w-1/12 flex flex-col items-center dark:bg-dark_1'>
+        <div className='h-dvh flex flex-col items-center dark:bg-dark_1'>
             <div className='mt-12 flex flex-col items-center'>
                 <div className='mb-24'>
                     <img width={60} height={60} src={logo} alt="#"/>

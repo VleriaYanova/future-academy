@@ -4,6 +4,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 module.exports = {
     mode: "development",
     devServer: {
+        static: './dist',
         port: 3001,
         compress: true,
         hot: true,
@@ -25,6 +26,9 @@ module.exports = {
     ],
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    },
+    optimization: {
+        runtimeChunk: 'single',
     },
     module: {
         rules: [

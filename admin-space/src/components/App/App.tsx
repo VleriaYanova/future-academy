@@ -17,13 +17,20 @@ const App = () => {
     }, [darkTheme])
 
     return (
-        <>
-            <ThemeToggler onClick={() => {
-                setDarkTheme(!darkTheme)
-            }}/>
-            <Header/>
-            <SideBar/>
-        </>
+        <div className='grid grid-areas-layout grid-cols-layout  h-full'>
+            {/*<ThemeToggler onClick={() => {*/}
+            {/*    setDarkTheme(!darkTheme)*/}
+            {/*}}/>*/}
+            <div className='grid-in-header'>
+                <Header/>
+            </div>
+            <div className='grid-in-nav'>
+                <SideBar/>
+            </div>
+            <div className='grid-in-main'>
+                <p>kdsgjh</p>
+            </div>
+        </div>
     );
 };
 

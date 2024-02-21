@@ -20,6 +20,16 @@ module.exports = {
                 'dark_1': '#2E293E',
                 'dark_2': '#1E192A',
             },
+            gridTemplateAreas: {
+                'layout': [
+                    'nav header',
+                    'nav main',
+                    'nav main',
+                ],
+            },
+            gridTemplateColumns: {
+                'layout': '1fr 10fr',
+            },
             fontFamily: {
                 'bold': ["carioBold", 'sans-serif'],
                 'reg': ["carioRegular", 'sans'],
@@ -27,5 +37,7 @@ module.exports = {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        require('@savvywombat/tailwindcss-grid-areas')
+    ],
 };
