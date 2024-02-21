@@ -15,8 +15,6 @@ const SideBar = () => {
     const toggleSection = () => {
 
     }
-
-
     return (
         <div className='h-dvh w-1/12 flex flex-col items-center dark:bg-dark_1'>
             <div className='mt-12 flex flex-col items-center'>
@@ -25,13 +23,13 @@ const SideBar = () => {
                 </div>
                 <div className='flex flex-col items-center gap-6'>
                     <Home  width={60} height={60}  fill={'#D1D1D1'}/>
-                    <Email width={60} height={60} fill={'pink'}/>
-                    <ContactBook width={60} height={60}/>
-                    <Coin width={60} height={60}/>
-                    <Dashboard width={60} height={60}/>
-                    <Invoices width={60} height={60}/>
-                    <Money width={60} height={60}/>
-                    <Ticket width={60} height={60}/>
+                    <Email width={60} height={60} fill={'#D1D1D1'} />
+                    <ContactBook width={60} height={60} fill={'#D1D1D1'}/>
+                    <Coin width={60} height={60} fill={'#D1D1D1'}/>
+                    <Dashboard width={60} height={60} fill={'#D1D1D1'}/>
+                    <Invoices width={60} height={60} fill={'#D1D1D1'} />
+                    <Money width={60} height={60} fill={'#D1D1D1'}/>
+                    <Ticket width={60} height={60} fill={'#D1D1D1'}/>
                 </div>
             </div>
         </div>

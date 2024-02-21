@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './app.css';
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
 import SideBar from "../SideBar/SideBar";
+import Header from "../Header/Header";
 
 const App = () => {
     const [darkTheme, setDarkTheme] = useState(false);
@@ -20,6 +21,7 @@ const App = () => {
             <ThemeToggler onClick={() => {
                 setDarkTheme(!darkTheme)
             }}/>
+            <Header/>
             <SideBar/>
         </>
     );

@@ -7,6 +7,7 @@
     "start": "webpack serve"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/file-loader": "^5.0.4",
     "html-webpack-plugin": "^5.6.0",
     "react": "^18.2.0",
@@ -19,7 +20,6 @@
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
     "@babel/preset-react": "^7.23.3",
-    "@svgr/webpack": "^8.1.0",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.17",
