@@ -32,7 +32,7 @@ module.exports = {
             },
             fontFamily: {
                 'bold': ["carioBold", 'sans-serif'],
-                'reg': ["carioRegular", 'sans'],
+                'reg': ["carioRegular"],
                 'semi': ["carioSemiBold", 'mono'],
             },
         },

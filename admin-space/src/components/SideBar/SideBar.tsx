@@ -35,5 +35,5 @@ const SideBar = () => {
         </div>
     );
 };
-
+//TODO сдеать границу сбоку
 export default SideBar;

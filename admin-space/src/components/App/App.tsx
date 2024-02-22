@@ -18,9 +18,9 @@ const App = () => {
 
     return (
         <div className='grid grid-areas-layout grid-cols-layout  h-full'>
-            {/*<ThemeToggler onClick={() => {*/}
-            {/*    setDarkTheme(!darkTheme)*/}
-            {/*}}/>*/}
+            <ThemeToggler onClick={() => {
+                setDarkTheme(!darkTheme)
+            }}/>
             <div className='grid-in-header'>
                 <Header/>
             </div>
