@@ -30,6 +30,9 @@ module.exports = {
             gridTemplateColumns: {
                 'layout': '1fr 10fr',
             },
+            gridTemplateRows:{
+                'layout': '1fr 8fr'
+            },
             fontFamily: {
                 'bold': ["carioBold", 'sans-serif'],
                 'reg': ["carioRegular"],

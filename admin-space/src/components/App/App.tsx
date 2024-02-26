@@ -3,6 +3,8 @@ import './app.css';
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
 import SideBar from "../SideBar/SideBar";
 import Header from "../Header/Header";
+import Dashboard from "../Courses/Courses";
+import AddCourse from "../AddCourse/AddCourse";
 
 const App = () => {
     const [darkTheme, setDarkTheme] = useState(false);
@@ -17,7 +19,7 @@ const App = () => {
     }, [darkTheme])
 
     return (
-        <div className='grid grid-areas-layout grid-cols-layout  h-full'>
+        <div className='grid grid-areas-layout grid-cols-layout grid-rows-layout  h-full'>
             <ThemeToggler onClick={() => {
                 setDarkTheme(!darkTheme)
             }}/>
@@ -28,7 +30,8 @@ const App = () => {
                 <SideBar/>
             </div>
             <div className='grid-in-main'>
-                <p>kdsgjh</p>
+                <Dashboard/>
+                <AddCourse/>
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ import ArrowUp from './img/arrowUp.svg';
 
 const Header = () => {
     return (
-        <div className='flex dark:bg-dark_1 h-1/3 justify-between items-center border-b-2 border-gray_3 '>
+        <div className='flex dark:bg-dark_1 h-full justify-between items-center border-b-2 border-gray_3 '>
             <div className='ml-9'>
                 <input type="text"
                        className="bg-gray_4 w-72 px-8 text-gray_1 text-sm rounded-2xl block p-2.5 focus:border-none  focus:outline-none"/>
