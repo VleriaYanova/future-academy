@@ -35,8 +35,21 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 use: {
-                    loader: "babel-loader"
-                }
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                            '@babel/preset-env',
+                            "@babel/preset-typescript",
+                            [
+                                "@babel/preset-react",
+                                {
+                                    runtime:  'automatic',
+                                }
+                            ]
+                        ],
+                    }
+                },
+                exclude: /node_modules/,
             },
             {
                 test: /\.css$/i,

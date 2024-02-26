@@ -8,6 +8,7 @@ import Dashboard from './img/Dashboard.svg';
 import Invoices from './img/Invoice.svg';
 import Money from './img/Money.svg';
 import Ticket from './img/Ticket.svg';
+import {Link, NavLink} from "react-router-dom";
 
 const SideBar = () => {
     const [cheked, setCheked] = useState([]);

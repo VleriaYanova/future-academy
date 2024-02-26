@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 
 const Courses = () => {
@@ -9,9 +10,9 @@ const Courses = () => {
                 <span className='text-lg text-gray_4'>(228)</span>
             </div>
             <div className='flex mt-5 gap-4'>
-                <button className='px-20 py-3 bg-blue rounded-2xl font-semi text-white text-lg'>
+                <Link to="/addcourse" className='px-20 py-3 bg-blue rounded-2xl font-semi text-white text-lg'>
                     Add<span>+</span>
-                </button>
+                </Link>
                 <input type="text" placeholder={'find...'}
                        className="bg-gray_4 w-72 px-8 text-gray_1 text-sm rounded-2xl block p-2.5 focus:border-none  focus:outline-none placeholder:text-white"/>
             </div>

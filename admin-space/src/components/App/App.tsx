@@ -5,6 +5,7 @@ import SideBar from "../SideBar/SideBar";
 import Header from "../Header/Header";
 import Dashboard from "../Courses/Courses";
 import AddCourse from "../AddCourse/AddCourse";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 const App = () => {
     const [darkTheme, setDarkTheme] = useState(false);
@@ -19,21 +20,25 @@ const App = () => {
     }, [darkTheme])
 
     return (
-        <div className='grid grid-areas-layout grid-cols-layout grid-rows-layout  h-full'>
-            <ThemeToggler onClick={() => {
-                setDarkTheme(!darkTheme)
-            }}/>
-            <div className='grid-in-header'>
-                <Header/>
+        <BrowserRouter>
+            <div className='grid grid-areas-layout grid-cols-layout grid-rows-layout  h-full'>
+                <ThemeToggler onClick={() => {
+                    setDarkTheme(!darkTheme)
+                }}/>
+                <div className='grid-in-header'>
+                    <Header/>
+                </div>
+                <div className='grid-in-nav'>
+                    <SideBar/>
+                </div>
+                <div className='grid-in-main'>
+                    <Routes>
+                        <Route path="/courses" element={<Dashboard/>}/>
+                        <Route path="/addcourse" element={<AddCourse/>}/>
+                    </Routes>
+                </div>
             </div>
-            <div className='grid-in-nav'>
-                <SideBar/>
-            </div>
-            <div className='grid-in-main'>
-                <Dashboard/>
-                <AddCourse/>
-            </div>
-        </div>
+        </BrowserRouter>
     );
 };
 

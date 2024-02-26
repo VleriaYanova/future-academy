@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from "react-router-dom";
 
 const AddCourse = () => {
     const [name, setName] = useState('')
@@ -57,9 +58,9 @@ const AddCourse = () => {
                     {/*</div>*/}
                 </div>
                 <div className='flex mb-5 w-full justify-end'>
-                    <button onClick={allInputsValue}
+                    <Link to="/courses" onClick={allInputsValue}
                             className='px-20 py-3 bg-blue rounded-2xl font-semi text-white text-lg'>Add
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
