@@ -2,15 +2,12 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {Course} from "../../types/courseTypes";
+import { useGetPostsQuery } from '../../redux/cApi';
 
 const AddCourse = () => {
-
-        const { data } = useQuery({
-
-            queryKey: ['test'],
-            queryFn: () => Promise.resolve(5),
-        })
-        console.log(data)
+    const { data, isLoading, isError } = useGetPostsQuery();
+        console.log(data);
+        
 const [name, setName] = useState('')
 const [categories, setCategories] = useState('')
 const [author, setAuthor] = useState('')

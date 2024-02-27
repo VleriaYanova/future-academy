@@ -1,28 +1,29 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { Course } from '../types/courseTypes'
 interface Post {
     id: number
     name: string
 }
-type PostsResponse = Post[]
+type CoursesResponse = Course[]
 
-const api = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: '/' }),
-    tagTypes: ['Post'],
+export const api = createApi({
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8888' }),
+    tagTypes: ['Course'],
     endpoints: (build) => ({
-        getPosts: build.query<PostsResponse, void>({
-            // highlight-start
-            query: () => 'posts',
-            // highlight-end
+        getPosts: build.query<CoursesResponse, void>({
+            query: () => '/api/courses',
         }),
-        addPost: build.mutation<Post, Partial<Post>>({
-            // highlight-start
-            query: (body) => ({
-                url: `posts`,
-                method: 'POST',
-                body,
-            }),
-            // highlight-end
-            invalidatesTags: [{ type: 'Post', id: 'LIST' }],
-        }),
+        // addPost: build.mutation<Post, Partial<Post>>({
+           
+        //     query: (body) => ({
+        //         url: `posts`,
+        //         method: 'POST',
+        //         body,
+        //     }),
+            
+        //     invalidatesTags: [{ type: 'Post', id: 'LIST' }],
+        // }),
     })
 })
+
+export  const {useGetPostsQuery} = api
