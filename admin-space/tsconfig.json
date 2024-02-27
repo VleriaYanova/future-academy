@@ -14,10 +14,4 @@
   "files": [
     "global.d.ts"
   ],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS",
-      "lib": ["es2017", "dom"]
-    }
-  }
 }

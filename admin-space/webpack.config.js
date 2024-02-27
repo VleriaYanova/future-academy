@@ -24,41 +24,20 @@ module.exports = {
             }
         })
     ],
-    resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    },
+
     optimization: {
         runtimeChunk: 'single',
     },
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: [
-                            '@babel/preset-env',
-                            "@babel/preset-typescript",
-                            [
-                                "@babel/preset-react",
-                                {
-                                    runtime:  'automatic',
-                                }
-                            ]
-                        ],
-                    }
-                },
+                test: /\.tsx?$/,
+                use: 'ts-loader',
                 exclude: /node_modules/,
             },
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader', 'postcss-loader'],
-            },
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
             },
             {
                 test: /\.(png|jpg|gif|ttf)$/,
@@ -75,5 +54,8 @@ module.exports = {
 
             }
         ]
-    }
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    },
 }
