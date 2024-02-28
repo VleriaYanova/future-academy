@@ -1,9 +1,12 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-
+import { useGetAllCoursesQuery } from '../../redux/cApi';
+import { Course } from './../../types/courseTypes';
 
 
 const Courses = () => {
+const {data} = useGetAllCoursesQuery();
+
 
     return (
         <div className='font-bold text-4xl dark:text-white pt-10 dark:bg-dark_1 h-screen z-10'>
@@ -37,6 +40,25 @@ const Courses = () => {
                             Tags
                         </th>
                     </tr>
+                    {data?.items.map((course: Course) => {
+                        return <tr className='bg-gray_3 border-b border-gray_4'>
+                        <th>
+                            <input type='checkbox'/>
+                        </th>
+                        <th>
+                           {course.name}
+                        </th>
+                        <th>
+                            {course.categories}
+                        </th>
+                        <th>
+                            {course.authors}
+                        </th>
+                        <th>
+                            {course.description}
+                        </th>
+                    </tr>
+                    })}
                 </table>
             </div>
         </div>

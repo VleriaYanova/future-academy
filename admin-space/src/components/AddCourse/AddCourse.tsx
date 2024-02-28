@@ -1,22 +1,20 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
-import {useMutation, useQuery} from "@tanstack/react-query";
-import {Course} from "../../types/courseTypes";
-import { useGetAllCoursesQuery, useAddCourseMutation } from '../../redux/cApi';
+import {useAddCourseMutation } from '../../redux/cApi';
 
 const AddCourse = () => {
 const [addCourse, {isError}] = useAddCourseMutation();
        
 const [name, setName] = useState('')
 const [categories, setCategories] = useState('')
-const [author, setAuthor] = useState('')
+const [authors, setAuthor] = useState('')
 const [description, setDescription] = useState('')
 // const [tags, setTags] = useState('')
 const allInputsValue = () => {
     const course = {
         courseName: name,
         courseCategories: categories,
-        courseAuthor: author,
+        courseAuthor: authors,
         courseDescription: description
     }
     setName('');
@@ -29,8 +27,8 @@ const allInputsValue = () => {
 
 
 const handleAddCourse = async () => {
-    if(name && categories && author &&  description){
-        await addCourse({name: name, categories: categories, authors: author, description: description, tags: 'sfehsfskkj'}).unwrap;
+    if(name && categories && authors &&  description){
+        await addCourse({name, categories, authors, description, tags: 'sfehsfskkj'}).unwrap;
         setName('');
         setDescription('');
         setAuthor('');
@@ -59,7 +57,7 @@ return (
                 </div>
                 <div className='flex w-1/2 pr-4 mb-2 items-center'>
                     <label className='whitespace-nowrap w-1/2 ' htmlFor="">Course author</label>
-                    <input value={author} onChange={(e) => setAuthor(e.target.value)}
+                    <input value={authors} onChange={(e) => setAuthor(e.target.value)}
                            className='w-80 border-2 rounded-md border-gray_3 focus:border-gray_4 focus:outline-none'
                            type="text" placeholder={'Course author'}/>
                 </div>
