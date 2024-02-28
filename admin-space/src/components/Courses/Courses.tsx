@@ -1,11 +1,15 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import { useGetAllCoursesQuery } from '../../redux/cApi';
+import { useDeleteCourseMutation, useGetAllCoursesQuery } from '../../redux/cApi';
 import { Course } from './../../types/courseTypes';
 
 
 const Courses = () => {
 const {data} = useGetAllCoursesQuery();
+const [deleteProduct] = useDeleteCourseMutation();
+const handleDeleteCourse = async (id: any) => {
+    await deleteProduct(id);
+}
 
 
     return (
@@ -43,7 +47,8 @@ const {data} = useGetAllCoursesQuery();
                     {data?.items.map((course: Course) => {
                         return <tr className='bg-gray_3 border-b border-gray_4'>
                         <th>
-                            <input type='checkbox'/>
+                            {/* <input type='checkbox'/> */}
+                            <button onClick={() => handleDeleteCourse(course.id)}>delete</button>
                         </th>
                         <th>
                            {course.name}

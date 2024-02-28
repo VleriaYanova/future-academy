@@ -29,7 +29,15 @@ export const api = createApi({
             }),
             invalidatesTags: [{ type: 'Course'}],
         }),
+        
+        deleteCourse: build.mutation<Course, Partial<Course>>({
+            query: (id) => ({
+                url: `/courses/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: [{ type: 'Course'}],
+        }) 
     })
 })
 
-export  const {useGetAllCoursesQuery, useAddCourseMutation} = api
+export  const {useGetAllCoursesQuery, useAddCourseMutation, useDeleteCourseMutation} = api
