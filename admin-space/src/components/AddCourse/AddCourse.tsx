@@ -10,21 +10,6 @@ const [categories, setCategories] = useState('')
 const [authors, setAuthor] = useState('')
 const [description, setDescription] = useState('')
 // const [tags, setTags] = useState('')
-const allInputsValue = () => {
-    const course = {
-        courseName: name,
-        courseCategories: categories,
-        courseAuthor: authors,
-        courseDescription: description
-    }
-    setName('');
-    setDescription('');
-    setAuthor('');
-    setCategories('');
-    return course
-}
-
-
 
 const handleAddCourse = async () => {
     if(name && categories && authors &&  description){
