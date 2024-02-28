@@ -9,12 +9,12 @@ const Courses = () => {
     const [deleteCourse] = useDeleteCourseMutation();
     const [updateCourse] = useUpdateCourseMutation();
     const [isOpen, setOpen] = useState(false);
-    const handleDeleteCourse = async (id: any) => {
+    const handleDeleteCourse = async (id: number) => {
         await deleteCourse(id);
     }
 
-    const handleChangeCourse = async (id: any, body: Course) => {
-        await updateCourse(id)
+    const handleChangeCourse = async (id: number, body: Course) => {
+        await updateCourse({id, ...body})
         setOpen(!isOpen)
     }
 
@@ -54,12 +54,11 @@ const Courses = () => {
                         return <tr className='bg-gray_3 border-b border-gray_4'>
                             <th>
                                 {/* <input type='checkbox'/> */}
-                                <button onClick={() => handleDeleteCourse(course.id)}>delete</button>
+                                <button onClick={() => handleDeleteCourse(course.id!)}>delete</button>
                                 <br />
-                                <button onClick={() => handleChangeCourse(course.id, course)}>Change</button>
+                                <button onClick={() => handleChangeCourse(course.id!, {authors:'123321', description: 'sefs1231231e', categories: 'awdadw', tags: '213', name: 'lkjl'})}>Change</button>
                             </th>
                             <th>
-                                {course.id}
                                 {course.name}
                                 <br />
                                 <input style={isOpen ? { display: 'none' } : { display: 'block' }} type="text" placeholder='name' />

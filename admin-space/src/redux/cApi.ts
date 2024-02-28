@@ -30,7 +30,7 @@ export const api = createApi({
             invalidatesTags: [{ type: 'Course'}],
         }),
         
-        deleteCourse: build.mutation<Course, Partial<Course>>({
+        deleteCourse: build.mutation<Course, number>({
             query: (id) => ({
                 url: `/courses/${id}`,
                 method: 'DELETE',
@@ -38,11 +38,12 @@ export const api = createApi({
             invalidatesTags: [{ type: 'Course'}],
         }),
         updateCourse: build.mutation<Course, Partial<Course> & Pick<Course, 'id'>>({
-            query: (id, ...patch) => ({
+            query: ({id, ...body}) => ({
                 url: `/courses/${id}`,
                 method: 'PUT',
-                body: patch,
+                body,
             }),
+            invalidatesTags: [{ type: 'Course'}],
         })
     })
 })
