@@ -4,8 +4,6 @@ import {Link} from "react-router-dom";
 
 
 const Courses = () => {
-    const courseId = 1
-
 
     return (
         <div className='font-bold text-4xl dark:text-white pt-10 dark:bg-dark_1 h-screen z-10'>

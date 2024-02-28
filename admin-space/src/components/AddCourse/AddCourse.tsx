@@ -2,12 +2,11 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {Course} from "../../types/courseTypes";
-import { useGetPostsQuery } from '../../redux/cApi';
+import { useGetAllCoursesQuery, useAddCourseMutation } from '../../redux/cApi';
 
 const AddCourse = () => {
-    const { data, isLoading, isError } = useGetPostsQuery();
-        console.log(data);
-        
+const [addCourse, {isError}] = useAddCourseMutation();
+       
 const [name, setName] = useState('')
 const [categories, setCategories] = useState('')
 const [author, setAuthor] = useState('')
@@ -25,6 +24,18 @@ const allInputsValue = () => {
     setAuthor('');
     setCategories('');
     return course
+}
+
+
+
+const handleAddCourse = async () => {
+    if(name && categories && author &&  description){
+        await addCourse({name: name, categories: categories, authors: author, description: description, tags: 'sfehsfskkj'}).unwrap;
+        setName('');
+        setDescription('');
+        setAuthor('');
+        setCategories(''); 
+    }
 }
 
 return (
@@ -64,7 +75,7 @@ return (
                 {/*</div>*/}
             </div>
             <div className='flex mb-5 w-full justify-end'>
-                <Link to="/courses" onClick={allInputsValue}
+                <Link to="/courses" onClick={handleAddCourse}
                       className='px-20 py-3 bg-blue rounded-2xl font-semi text-white text-lg'>Add
                 </Link>
             </div>
