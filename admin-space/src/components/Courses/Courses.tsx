@@ -7,16 +7,13 @@ import { Course } from './../../types/courseTypes';
 const Courses = () => {
     const { data } = useGetAllCoursesQuery();
     const [deleteCourse] = useDeleteCourseMutation();
-    const [updateCourse] = useUpdateCourseMutation();
     const [isOpen, setOpen] = useState(false);
+    
     const handleDeleteCourse = async (id: number) => {
         await deleteCourse(id);
     }
 
-    const handleChangeCourse = async (id: number, body: Course) => {
-        await updateCourse({id, ...body})
-        setOpen(!isOpen)
-    }
+    // onClick={() => handleChangeCourse(course.id!, {authors:'123321', description: 'sefs1231231e', categories: 'awdadw', tags: '213', name: 'lkjl'})}
 
     return (
         <div className='font-bold text-4xl dark:text-white pt-10 dark:bg-dark_1 h-screen z-10'>
@@ -56,32 +53,21 @@ const Courses = () => {
                                 {/* <input type='checkbox'/> */}
                                 <button onClick={() => handleDeleteCourse(course.id!)}>delete</button>
                                 <br />
-                                <button onClick={() => handleChangeCourse(course.id!, {authors:'123321', description: 'sefs1231231e', categories: 'awdadw', tags: '213', name: 'lkjl'})}>Change</button>
+                                <Link to={`/detailcourse/${course.id}`}>
+                                    Change
+                                </Link>
                             </th>
                             <th>
                                 {course.name}
-                                <br />
-                                <input style={isOpen ? { display: 'none' } : { display: 'block' }} type="text" placeholder='name' />
-                                <br />
-
                             </th>
                             <th>
                                 {course.categories}
-                                <br />
-                                <input style={isOpen ? { display: 'none' } : { display: 'block' }} type="text" placeholder='categories' />
-                                <br />
                             </th>
                             <th>
                                 {course.authors}
-                                <br />
-                                <input style={isOpen ? { display: 'none' } : { display: 'block' }} type="text" placeholder='authors' />
-                                <br />
                             </th>
                             <th>
                                 {course.description}
-                                <br />
-                                <input style={isOpen ? { display: 'none' } : { display: 'block' }} type="text" placeholder='description' />
-                                <br />
                             </th>
                         </tr>
                     })}

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Course } from '../types/courseTypes'
+import { Course, GetOneCourse } from '../types/courseTypes'
 
 export type CoursesResponse = Course[]
 type AllCourses = {
@@ -44,8 +44,11 @@ export const api = createApi({
                 body,
             }),
             invalidatesTags: [{ type: 'Course'}],
+        }),
+        getCourseByID: build.query<GetOneCourse, number>({
+            query: (id) => `/courses/${id}`,
         })
     })
 })
 
-export  const {useGetAllCoursesQuery, useAddCourseMutation, useDeleteCourseMutation, useUpdateCourseMutation} = api
+export  const {useGetAllCoursesQuery, useAddCourseMutation, useDeleteCourseMutation, useUpdateCourseMutation, useGetCourseByIDQuery} = api

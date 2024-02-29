@@ -6,3 +6,7 @@ export interface Course{
     tags?: string,
     name: string,
 }
+
+export interface GetOneCourse{
+    course: Course; 
+}

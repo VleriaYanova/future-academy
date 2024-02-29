@@ -6,6 +6,7 @@ import Header from "../Header/Header";
 import Dashboard from "../Courses/Courses";
 import AddCourse from "../AddCourse/AddCourse";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import DetailCourse from '../DetailCourse/DetailCourse';
 
 const App = () => {
     const [darkTheme, setDarkTheme] = useState(false);
@@ -35,6 +36,7 @@ const App = () => {
                     <Routes>
                         <Route path="/courses" element={<Dashboard/>}/>
                         <Route path="/addcourse" element={<AddCourse/>}/>
+                        <Route path='/detailcourse/:id' element={<DetailCourse/>}/>
                     </Routes>
                 </div>
             </div>
