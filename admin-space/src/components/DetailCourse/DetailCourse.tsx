@@ -7,14 +7,14 @@ import { Course } from "../../types/courseTypes";
 const DetailCourse = () => {
     const params = useParams();
     const id = Number(params.id);
-    const {data} = useGetCourseByIDQuery(Number(params.id))
+    const { data } = useGetCourseByIDQuery(id)
     const [updateCourse] = useUpdateCourseMutation();
     const [authorInputValue, setAuthorInputValue] = useState('')
     const [nameInputValue, setNameInputValue] = useState('')
     const [descriptionInputValue, setDescriptionInputValue] = useState('')
     const [tagsInputValue, setTagsInputValue] = useState('')
     const [categoriesInputValue, setCategoriesInputValue] = useState('')
-    
+
     useEffect(() => {
         if (data && data.course) {
             setAuthorInputValue(data.course.authors);
@@ -25,54 +25,52 @@ const DetailCourse = () => {
         }
     }, [data]);
 
-    // {id, {authors: authorInputValue, name: nameInputValue, tags: tagsInputValue, description: descriptionInputValue, categories: categoriesInputValue}}
-    
     const handleChangeCourse = async (id: number, body: Course) => {
-        await updateCourse({id, ...body})
+        await updateCourse({ id, ...body })
     }
 
     const handleOnClickUpdateButton = () => {
-        handleChangeCourse(id, {authors: authorInputValue, name: nameInputValue, tags: tagsInputValue, description: descriptionInputValue, categories: categoriesInputValue})
+        handleChangeCourse(id, { authors: authorInputValue, name: nameInputValue, tags: tagsInputValue, description: descriptionInputValue, categories: categoriesInputValue })
     }
-    
-    return ( 
+
+    return (
         <div className='font-bold text-4xl dark:text-white pt-10 dark:bg-dark_1 h-screen z-10'>
-           <div>
+            <div>
                 <input type="text" onChange={(e) => {
-                    setAuthorInputValue(e.target.value)    
+                    setAuthorInputValue(e.target.value)
                 }} value={authorInputValue} />
             </div>
             <div>
+                <div>
+                    <input type="text" onChange={(e) => {
+                        setNameInputValue(e.target.value)
+                    }} value={nameInputValue} />
+                </div>
+            </div>
             <div>
-                <input type="text" onChange={(e) => {
-                    setNameInputValue(e.target.value)    
-                }} value={nameInputValue} />
+                <div>
+                    <input type="text" onChange={(e) => {
+                        setDescriptionInputValue(e.target.value)
+                    }} value={descriptionInputValue} />
+                </div>
             </div>
-           </div>
-           <div>
-           <div>
-                <input type="text" onChange={(e) => {
-                    setDescriptionInputValue(e.target.value)    
-                }} value={descriptionInputValue} />
+            <div>
+                <div>
+                    <input type="text" onChange={(e) => {
+                        setTagsInputValue(e.target.value)
+                    }} value={tagsInputValue} />
+                </div>
             </div>
-           </div>
-           <div>
-           <div>
-                <input type="text" onChange={(e) => {
-                    setTagsInputValue(e.target.value)    
-                }} value={tagsInputValue} />
+            <div>
+                <div>
+                    <input type="text" onChange={(e) => {
+                        setCategoriesInputValue(e.target.value)
+                    }} value={categoriesInputValue} />
+                </div>
             </div>
-           </div>
-           <div>
-           <div>
-                <input type="text" onChange={(e) => {
-                    setCategoriesInputValue(e.target.value)    
-                }} value={categoriesInputValue} />
-            </div>
-           </div>
-           <Link to={'/courses'} onClick={handleOnClickUpdateButton} className="px-20 py-3 bg-blue rounded-2xl font-semi text-white text-lg">update</Link>
+            <Link to={'/courses'} onClick={handleOnClickUpdateButton} className="px-20 py-3 bg-blue rounded-2xl font-semi text-white text-lg">update</Link>
         </div>
     );
 }
- 
+
 export default DetailCourse;

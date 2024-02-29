@@ -7,19 +7,16 @@ import { Course } from './../../types/courseTypes';
 const Courses = () => {
     const { data } = useGetAllCoursesQuery();
     const [deleteCourse] = useDeleteCourseMutation();
-    const [isOpen, setOpen] = useState(false);
-    
+
     const handleDeleteCourse = async (id: number) => {
         await deleteCourse(id);
     }
 
-    // onClick={() => handleChangeCourse(course.id!, {authors:'123321', description: 'sefs1231231e', categories: 'awdadw', tags: '213', name: 'lkjl'})}
-
     return (
-        <div className='font-bold text-4xl dark:text-white pt-10 dark:bg-dark_1 h-screen z-10'>
+        <div className='font-bold text-4xl pt-10 dark:bg-dark_1 h-screen z-10'>
             <div className='flex items-end gap-1'>
-                <p>Courses</p>
-                <span className='text-lg text-gray_4'>(228)</span>
+                <p className='dark:text-white'>Courses</p>
+                <span className='text-lg text-gray_4'>({data && data.items.length})</span>
             </div>
             <div className='flex mt-5 gap-4'>
                 <Link to="/addcourse" className='px-20 py-3 bg-blue rounded-2xl font-semi text-white text-lg'>
@@ -30,7 +27,7 @@ const Courses = () => {
             </div>
             <div className='mt-4 '>
                 <table className='w-full items-center text-lg'>
-                    <tr className='bg-gray_3 border-b border-gray_4'>
+                    <tr className='bg-gray_3 border-gray_4'>
                         <th>
                             <input type='checkbox' />
                         </th>
@@ -48,14 +45,14 @@ const Courses = () => {
                         </th>
                     </tr>
                     {data?.items.map((course: Course) => {
-                        return <tr className='bg-gray_3 border-b border-gray_4'>
-                            <th>
-                                {/* <input type='checkbox'/> */}
-                                <button onClick={() => handleDeleteCourse(course.id!)}>delete</button>
+                        return <tr className='bg-gray_1 border  border-gray_4'>
+                            <th className='border  border-gray_4'>
+                                <input type='checkbox' />
+                                {/* <button onClick={() => handleDeleteCourse(course.id!)}>delete</button>
                                 <br />
                                 <Link to={`/detailcourse/${course.id}`}>
                                     Change
-                                </Link>
+                                </Link> */}
                             </th>
                             <th>
                                 {course.name}
