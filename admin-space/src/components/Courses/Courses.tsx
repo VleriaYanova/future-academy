@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useDeleteCourseMutation, useGetAllCoursesQuery, useUpdateCourseMutation } from '../../redux/cApi';
 import { Course } from './../../types/courseTypes';
-
-
+import ArrowUp from '../../ui-kit/arrowUp.svg'
 const Courses = () => {
-    const { data } = useGetAllCoursesQuery();
+    let params = '';
+    const { data } = useGetAllCoursesQuery(params);
     const [deleteCourse] = useDeleteCourseMutation();
 
     const handleDeleteCourse = async (id: number) => {

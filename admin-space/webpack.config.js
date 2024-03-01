@@ -45,6 +45,7 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
+                issuer: /\.[jt]sx?$/,
                 use: [
                     {
                         loader: '@svgr/webpack',

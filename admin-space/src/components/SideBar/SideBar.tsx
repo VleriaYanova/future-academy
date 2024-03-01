@@ -31,6 +31,7 @@ const SideBar = () => {
                     <Invoices width={32} height={32} fill={'#D1D1D1'} />
                     <Money width={32} height={32} fill={'#D1D1D1'}/>
                     <Ticket width={32} height={32} fill={'#D1D1D1'}/>
+
                 </div>
             </div>
         </div>

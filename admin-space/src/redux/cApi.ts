@@ -14,8 +14,8 @@ export const api = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8888/api' }),
     tagTypes: ['Courses', 'Course'],
     endpoints: (build) => ({
-        getAllCourses: build.query<AllCourses, void>({
-            query: () => '/courses?pageSize=20',
+        getAllCourses: build.query<AllCourses, string | void>({
+            query: (params?) => `/courses${params}`,
            providesTags: (result) => result ? 
            [
             ...result.items.map(({ id }) => ({ type: 'Course' as const, id })), 'Course']

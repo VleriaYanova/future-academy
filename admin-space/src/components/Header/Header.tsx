@@ -3,7 +3,7 @@ import Chat from './img/Chat.svg'
 import Bell from './img/bell.svg'
 import Settings from './img/Setting.svg';
 import United from './img/United.png'
-import ArrowUp from './img/arrowUp.svg';
+import ArrowUp from '../../ui-kit/arrowUp.svg';
 
 const Header = () => {
     return (
