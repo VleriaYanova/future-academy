@@ -6,12 +6,10 @@ import ArrowUp from '../../ui-kit/arrowUp.svg';
 import ArrowDown from '../../ui-kit/arrowDown.svg';
 const Courses = () => {
     const [deleteCourse] = useDeleteCourseMutation();
-    const [open, setOpen] = useState(false);
     const [sortType, setSortType] = useState('');
     const [sortDirection, setSortDirection] = useState(true)
     let params = '';
     params = `?orderBy=${sortType}&direction=${sortDirection ? 'asc' : 'desc'}`;
-
 
     const { data } = useGetAllCoursesQuery(params);
 
@@ -19,17 +17,19 @@ const Courses = () => {
         await deleteCourse(id);
     }
 
-    
     const handleSorting = (event: any) => {
         const value = event.target.textContent.toLowerCase()
         setSortType(value);
         if(sortType == value){
+            console.log(123);
+            
             setSortDirection(!sortDirection)
+        }else{
+            setSortDirection(true)
         }
         
+        
     }
-
-    
 
     return (
         <div className='font-bold text-4xl pt-10 dark:bg-dark_1 h-screen z-10'>
