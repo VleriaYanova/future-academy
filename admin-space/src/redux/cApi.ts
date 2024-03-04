@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Course, GetOneCourse } from '../types/courseTypes'
+import { Course, GetOneCourse } from '../types/ICourse'
 
 export type CoursesResponse = Course[]
 type AllCourses = {
@@ -15,7 +15,7 @@ export const api = createApi({
     tagTypes: ['Courses', 'Course'],
     endpoints: (build) => ({
         getAllCourses: build.query<AllCourses, string | void>({
-            query: (params?) => `/courses${params}`,
+            query: (params) => `/courses${params}`,
            providesTags: (result) => result ? 
            [
             ...result.items.map(({ id }) => ({ type: 'Course' as const, id })), 'Course']

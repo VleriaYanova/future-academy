@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useGetCourseByIDQuery, useUpdateCourseMutation } from "../../redux/cApi";
-import { Course } from "../../types/courseTypes";
+import { Course } from "../../types/ICourse";
 
 
 const DetailCourse = () => {

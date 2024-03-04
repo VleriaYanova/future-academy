@@ -1,16 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { useDeleteCourseMutation, useGetAllCoursesQuery, useUpdateCourseMutation } from '../../redux/cApi';
-import { Course } from './../../types/courseTypes';
-import ArrowUp from '../../ui-kit/arrowUp.svg'
+import { Course } from '../../types/ICourse';
+import ArrowUp from '../../ui-kit/arrowUp.svg';
+import ArrowDown from '../../ui-kit/arrowDown.svg';
 const Courses = () => {
-    let params = '';
-    const { data } = useGetAllCoursesQuery(params);
     const [deleteCourse] = useDeleteCourseMutation();
+    const [open, setOpen] = useState(false);
+    const [sortType, setSortType] = useState('');
+    const [sortDirection, setSortDirection] = useState(true)
+    let params = '';
+    params = `?orderBy=${sortType}&direction=${sortDirection ? 'asc' : 'desc'}`;
+
+
+    const { data } = useGetAllCoursesQuery(params);
 
     const handleDeleteCourse = async (id: number) => {
         await deleteCourse(id);
     }
+
+    
+    const handleSorting = (event: any) => {
+        const value = event.target.textContent.toLowerCase()
+        setSortType(value);
+        if(sortType == value){
+            setSortDirection(!sortDirection)
+        }
+        
+    }
+
+    
 
     return (
         <div className='font-bold text-4xl pt-10 dark:bg-dark_1 h-screen z-10'>
@@ -18,7 +37,7 @@ const Courses = () => {
                 <p className='dark:text-white'>Courses</p>
                 <span className='text-lg text-gray_4'>({data && data.items.length})</span>
             </div>
-            <div className='flex mt-5 gap-4'>
+            <div className='flex mt-5 gap-4 items-center'>
                 <Link to="/addcourse" className='px-20 py-3 bg-blue rounded-2xl font-semi text-white text-lg'>
                     Add<span>+</span>
                 </Link>
@@ -27,21 +46,34 @@ const Courses = () => {
             </div>
             <div className='mt-4 '>
                 <table className='w-full items-center text-lg'>
-                    <tr className='bg-gray_3 border-gray_4'>
-                        <th>
+                    <tr className='bg-gray_3 border-gray_4 h-10 '>
+                        <th >
                             <input type='checkbox' />
                         </th>
                         <th>
-                            Name
+                            <div className='flex items-center justify-center'>
+                                <p className='cursor-pointer' onClick={handleSorting}>Name</p>
+                                {sortType == 'name'  && sortDirection ? <ArrowUp /> : sortType == 'name'  && !sortDirection ? <ArrowDown/> : ''}
+                            </div>
+
                         </th>
                         <th>
-                            Categories
+                            <div className='flex items-center justify-center'>
+                                <p className='cursor-pointer' onClick={handleSorting}>Categories</p>
+                                {sortType == 'categories' && sortDirection ? <ArrowUp /> : sortType == 'categories' && !sortDirection ? <ArrowDown/> : ''}
+                            </div>
                         </th>
                         <th>
-                            Authors
+                            <div className='flex items-center justify-center'>
+                                <p className='cursor-pointer' onClick={handleSorting}>Authors</p>
+                                {sortType == 'authors' && sortDirection ? <ArrowUp /> : sortType == 'authors' && !sortDirection ? <ArrowDown/> : ''}
+                            </div>
                         </th>
                         <th>
-                            Description
+                            <div className='flex items-center justify-center'>
+                                <p className='cursor-pointer' onClick={handleSorting}>Description</p>
+                                {sortType == 'description' && sortDirection ? <ArrowUp /> : sortType == 'description'  && !sortDirection ? <ArrowDown/> : ''}
+                            </div>
                         </th>
                     </tr>
                     {data?.items.map((course: Course) => {
