@@ -4,6 +4,9 @@ import { useDeleteCourseMutation, useGetAllCoursesQuery, useUpdateCourseMutation
 import { Course } from '../../types/ICourse';
 import ArrowUp from '../../ui-kit/arrowUp.svg';
 import ArrowDown from '../../ui-kit/arrowDown.svg';
+interface Item {
+    item: number
+}
 const Courses = () => {
     const [deleteCourse] = useDeleteCourseMutation();
     const [sortType, setSortType] = useState('');
@@ -20,15 +23,13 @@ const Courses = () => {
     const handleSorting = (event: any) => {
         const value = event.target.textContent.toLowerCase()
         setSortType(value);
-        if(sortType == value){
-            console.log(123);
-            
+        if (sortType == value) {
             setSortDirection(!sortDirection)
-        }else{
+        } else {
             setSortDirection(true)
         }
-        
-        
+
+
     }
 
     return (
@@ -46,38 +47,41 @@ const Courses = () => {
             </div>
             <div className='mt-4 '>
                 <table className='w-full items-center text-lg'>
-                    <tr className='bg-gray_3 border-gray_4 h-10 '>
-                        <th >
-                            <input type='checkbox' />
-                        </th>
-                        <th>
-                            <div className='flex items-center justify-center'>
-                                <p className='cursor-pointer' onClick={handleSorting}>Name</p>
-                                {sortType == 'name'  && sortDirection ? <ArrowUp /> : sortType == 'name'  && !sortDirection ? <ArrowDown/> : ''}
-                            </div>
+                    <thead>
+                        <tr className='bg-gray_3 border border-gray_4 h-10 '>
+                            <th >
+                                <input type='checkbox' />
+                            </th>
+                            <th>
+                                <div className='flex items-center justify-center'>
+                                    <p className='cursor-pointer' onClick={handleSorting}>Name</p>
+                                    {sortType == 'name' && sortDirection ? <ArrowUp /> : sortType == 'name' && !sortDirection ? <ArrowDown /> : ''}
+                                </div>
 
-                        </th>
-                        <th>
-                            <div className='flex items-center justify-center'>
-                                <p className='cursor-pointer' onClick={handleSorting}>Categories</p>
-                                {sortType == 'categories' && sortDirection ? <ArrowUp /> : sortType == 'categories' && !sortDirection ? <ArrowDown/> : ''}
-                            </div>
-                        </th>
-                        <th>
-                            <div className='flex items-center justify-center'>
-                                <p className='cursor-pointer' onClick={handleSorting}>Authors</p>
-                                {sortType == 'authors' && sortDirection ? <ArrowUp /> : sortType == 'authors' && !sortDirection ? <ArrowDown/> : ''}
-                            </div>
-                        </th>
-                        <th>
-                            <div className='flex items-center justify-center'>
-                                <p className='cursor-pointer' onClick={handleSorting}>Description</p>
-                                {sortType == 'description' && sortDirection ? <ArrowUp /> : sortType == 'description'  && !sortDirection ? <ArrowDown/> : ''}
-                            </div>
-                        </th>
-                    </tr>
-                    {data?.items.map((course: Course) => {
-                        return <tr className='bg-gray_1 border  border-gray_4'>
+                            </th>
+                            <th>
+                                <div className='flex items-center justify-center'>
+                                    <p className='cursor-pointer' onClick={handleSorting}>Categories</p>
+                                    {sortType == 'categories' && sortDirection ? <ArrowUp /> : sortType == 'categories' && !sortDirection ? <ArrowDown /> : ''}
+                                </div>
+                            </th>
+                            <th>
+                                <div className='flex items-center justify-center'>
+                                    <p className='cursor-pointer' onClick={handleSorting}>Authors</p>
+                                    {sortType == 'authors' && sortDirection ? <ArrowUp /> : sortType == 'authors' && !sortDirection ? <ArrowDown /> : ''}
+                                </div>
+                            </th>
+                            <th>
+                                <div className='flex items-center justify-center'>
+                                    <p className='cursor-pointer' onClick={handleSorting}>Description</p>
+                                    {sortType == 'description' && sortDirection ? <ArrowUp /> : sortType == 'description' && !sortDirection ? <ArrowDown /> : ''}
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {data?.items.map((course: Course, index: number) => {
+                        return <tr key={index} className='bg-gray_1 border  border-gray_4'>
                             <th className='border  border-gray_4'>
                                 <input type='checkbox' />
                                 {/* <button onClick={() => handleDeleteCourse(course.id!)}>delete</button>
@@ -100,6 +104,7 @@ const Courses = () => {
                             </th>
                         </tr>
                     })}
+                    </tbody>
                 </table>
             </div>
         </div>
